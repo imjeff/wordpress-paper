@@ -18,7 +18,7 @@
 <div class="content"><?php the_content(); ?></div>
 </article>
 <?php endwhile; ?>
-<?php if (is_home() || is_archive() || is_search()) { ?>
+<?php if (is_home() || is_archive()) { ?>
 <?php if ( get_the_posts_pagination() ) : ?><nav>
 <?php if ( get_previous_posts_link() ) : ?><?php previous_posts_link( '上一页' ); ?><?php endif; ?>
 <?php if ( get_next_posts_link() ) : ?><?php next_posts_link( '下一页' ); ?><?php endif; ?></nav><?php endif; ?>
