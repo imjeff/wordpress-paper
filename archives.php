@@ -5,6 +5,7 @@ Template Name: 文章归档
 ?>
 <?php get_header(); ?>
 <h1 class="title"><?php the_title();?></h1>
+<div class="content">
 <?php
 $previous_year = $year = 0;
 $previous_month = $month = 0;
@@ -26,7 +27,8 @@ endif;
 $previous_year = $year; $previous_month = $month;
 ?>
 <li>
-<time datetime="<?php the_time('Y年m月d日');?>"><?php the_time('m-d');?></time>&nbsp·&nbsp<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( $title_args ); ?>"><?php the_title_attribute( $title_args ); ?></a>
+<time datetime="<?php the_time('Y年m月d日');?>"><?php the_time('m-d');?></time>&nbsp·&nbsp<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 </li>
 <?php endforeach; ?>
+</div>
 <?php get_footer(); ?>

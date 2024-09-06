@@ -1,14 +1,22 @@
 <?php
 // 主题设置
-if (!function_exists('lim_setup')) :
-	function lim_setup()
+if (!function_exists('yayu_setup')) :
+	function yayu_setup()
 	{
       add_theme_support('automatic-feed-links');
       add_theme_support('title-tag');
 	  add_theme_support('custom-background');
       register_nav_menu('primary-menu', 'Primary Menu');
     }
-    add_action('after_setup_theme', 'lim_setup');
+    add_action('after_setup_theme', 'yayu_setup');
+endif;
+
+// 主题样式
+if ( ! function_exists( 'yayu_load_style' ) ) :
+	function yayu_load_style() {
+		wp_enqueue_style( 'yayu-style', get_stylesheet_uri(), array(), '20240831' );
+	}
+	add_action( 'wp_enqueue_scripts', 'yayu_load_style' );
 endif;
 
 // 程序优化

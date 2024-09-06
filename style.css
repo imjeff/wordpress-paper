@@ -3,9 +3,107 @@ Theme Name: Paper
 Theme URI: https://yayu.net/projects/wordpress-paper
 Author: Jeff Chen
 Author URI: https://yayu.net/
-Description: 一页纸，一片让博主可写可绘的极简空间。本主题为极简主题，禅定黄+静思蓝暗黑配色，无 JS、CSS 文件载入，对程序极简优化。主题支持自定义背景、自定义菜单，保留搜索及评论功能；内置文章归档模板；已作中文字体优化，内置3种字体方案可选。主题仅9个文件约50kb。
+Description: 一页纸，一片让博主可写可绘的极简空间。本主题为极简主题，禅定黄+静思蓝暗黑配色，无 JS、图片文件引用。主题支持自定义背景、自定义菜单，保留搜索及评论功能；内置文章归档模板；已作中文字体优化，内置3种字体方案可选。
 Tags: blog, one-column, full-width-template, minimalism, responsive, dark-mode, free
-Version: 1.0.3
+Version: 1.1.0
 License: CC BY-NC-SA 4.0 DEED
 License URI: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans
 */
+
+:root {
+    --width: 720px;
+    --font-yahei: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Helvetica,Arial,"PingFangSC-Regular","Hiragino Sans GB","Lantinghei SC","Microsoft Yahei","Source Han Sans CN","WenQuanYi Micro Hei",SimSun,sans-serif;
+    --font-fangsong: Baskerville, "Times New Roman", "Liberation Serif", STFangsong, FangSong, FangSong_GB2312, "CWTEX\-F", serif;
+    --font-songti: Georgia, "Nimbus Roman No9 L", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
+    --font-scale: 1em;
+    --background-color: #F2F0E5;
+    --main-color:#fff;
+    --heading-color: #222;
+    --nav-color:#666;
+    --text-color: #444;
+    --link-color: #444;
+    --code-background-color: #f2f2f2;
+    --code-color: #222;
+    --border-color: #ddd;
+    --blockquote-color: #222;
+    --gray-color: #999;
+    --shadow-color:#ebe4c6;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+    --background-color: #0b0c1b;
+    --main-color: #0e1028;
+    --heading-color: #c2cef0;
+    --nav-color: #585c90;
+    --text-color: #a6b4d2;
+    --link-color: #7b88c8;
+    --code-background-color: #000;
+    --code-color: #ddd;
+    --border-color: #7b88c8;
+    --blockquote-color: #ccc;
+    --gray-color: #4f5287;
+    --shadow-color: #000;
+    }
+}
+body {
+    font-family: var(--font-yahei); /* 可替换 --font-fangsong 或 --font-songti 字体 */
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+html{scroll-behavior:smooth;}
+h1,h2,h3,h4,h5,h6{color:var(--heading-color);}
+a{color:var(--link-color);cursor:pointer;text-decoration:none}
+a:hover{opacity:0.6;}
+nav a{margin-right:10px}
+strong,b{color:var(--heading-color)}
+button{margin:0;cursor:pointer}
+time,.comment-meta a{color:var(--gray-color);}
+main{padding:10% 7% 7%; background-color:var(--main-color);box-shadow: 0px 10px 20px 0px var(--shadow-color);}
+table{width:100%}
+hr{border:0;border-top:1px dashed}
+img{max-width:100%;height:auto}
+code{font-family:monospace;padding:2px;background-color:var(--code-background-color);color:var(--code-color);border-radius:3px}
+blockquote{border-left:1px solid var(--gray-color);color:var(--code-color);padding-left:20px;font-style:italic}
+header,footer{padding:20px 0;margin: 10px 0;color:var(--gray-color);}
+header a,footer a{color:var(--nav-color)}
+.home article,.archive article,.search article{margin-bottom: 40px;padding-bottom:40px;border-bottom:1px dashed var(--gray-color);}
+h1.title,h2.title {margin:0;line-height:1.6;}
+.intro{color:var(--gray-color);margin-bottom:80px;}
+.single .content,.page .content{margin-top: 50px;}
+.content a,.comment .reply a{border-bottom:1px solid var(--link-color);}
+.content a:has(img){border:none}
+.tags{margin-top: 50px;}
+.tags,.tags a{color:var(--gray-color);margin-right: 10px;}
+form > *:last-child{margin-bottom:0}
+label{font-size:0.9em;}
+input[type="text"],input[type="email"],input[type="url"],input[type="search"],textarea{background:transparent;border-radius:4px;border:1px solid var(--border-color);box-shadow:none;display:block;margin:0 0 15px 0;padding:12px;width:100%}
+textarea{line-height:1.5;height:100px}
+textarea:focus,input[type="email"]:focus,input[type="search"]:focus,input[type="text"]:focus,input[type="url"]:focus{border:1px solid var(--gray-color);outline:0}
+button,.button,input[type="button"],input[type="reset"],input[type="submit"]{background-color:var(--link-color);border:none;border-radius:4px;color:#fff;display:inline-block;font-family:inherit;font-size:16px;margin:0;padding:8px 16px 10px;text-align:center}
+button:hover,.button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover{cursor:pointer;opacity:.7}
+#comments,#respond{margin-top:40px;padding-top:40px;border-top:1px dashed var(--gray-color);}
+.commentlist,.commentlist .children{list-style: none;padding:0;margin-bottom:40px;}
+.comment{margin:30px 0;list-style: none;}
+.comment .comment{margin-left:50px}
+.comment-author cite{font-weight:bold;font-style:normal;}
+.comment-author .says,.comment-author .avatar{display:none}
+.logged-in .comment-respond .comment-reply-title{margin-bottom:20px}
+.comment-respond p + p{margin-top:20px}
+.comment-respond .comment-form-author,.comment-respond .comment-form-email{float:left;margin:10px 0;width:calc( 50% - 10px );max-width:calc(100% - 25px);}
+.comment-respond .comment-form-email{margin-left:20px}
+.comment-respond label{display:block}
+.comment-respond input,.comment-respond textarea{padding:10px;max-width:calc(100% - 25px);}
+.comment-respond input[type="checkbox"] + label{display:inline;font-size:14px;margin:0 0 0 5px}
+.closed{margin-top:20px}
+#cancel-comment-reply-link{float:right;font-weight: normal;}
+.searchform input{margin:20px 5px 20px 0;width: initial;display:inline-block;}
+.results{list-style:none;padding:0;}
+.results li{margin:20px 0 0;}
